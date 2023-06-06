@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
+    <% flash.each do |type, msg| %>
+      <div class="w-25 mx-auto my-5 alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

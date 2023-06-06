@@ -1,0 +1,32 @@
+<h1 class="text-center my-4">Products</h1>
+<div class="table-responsive container">
+  <table class="table table-bordered table-striped table-hover m-auto text-center">
+    <div class="row">
+      <%= link_to "New Product", new_product_path, class: "text-decoration-none col-2 mx-auto mb-2 text-light btn btn-info" %>
+    </div>
+    <div class="row">
+      <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Product Action</th>
+      </tr>
+    </div>
+
+    <% @products.each_with_index do |product,inx| %>
+      <div class="row">
+        <tr>
+          <td><%= inx+1 %></td>
+          <td><%= product.product_name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.price %></td>
+          <td><%= link_to 'Show', product, class: "text-decoration-none text-light btn btn-info me-2" %>
+          <%= link_to 'Edit', edit_product_path(product), class: "text-decoration-none text-dark btn btn-warning me-2" %>
+          <%= link_to "Destroy", product_path(product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none text-light btn btn-danger" %></td>
+        </tr>
+      </div>
+    <% end %>
+    
+  </table>
+</div>

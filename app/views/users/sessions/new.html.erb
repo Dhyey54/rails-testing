@@ -1,0 +1,31 @@
+<h2 class="text-center">User Log in</h2>
+
+<br>
+
+<div class="container-fluid">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <div class="row justify-content-center my-2">
+      <div class="col-md-2"><%= f.label :username, class: "form-lable" %><br /></div>
+      <div class="col-md-3"><%= f.text_field :username, class: "form-control" %></div>
+    </div>
+    
+    <div class="row justify-content-center my-2">
+      <div class="col-md-2"><%= f.label :password, class: "form-lable" %><br /></div>
+      <div class="col-md-3"><%= f.password_field :password, class: "form-control" %></div>
+    </div>
+    
+    <% if devise_mapping.rememberable? %>
+      <div class="row justify-content-center">
+        <div class="col-md-6 px-5"><%= f.label :remember_me, class: "mx-2" %><%= f.check_box :remember_me %></div>
+      </div>
+    <% end %>
+    
+    <div class="row justify-content-center">
+      <%= f.submit "Log in", class: "col-md-1 btn btn-dark" %>
+    </div>
+
+  <% end %>
+</div>
+
+<%= render "users/shared/links" %>
